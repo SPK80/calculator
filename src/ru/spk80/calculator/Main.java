@@ -9,8 +9,8 @@ class Main {
 			String input;
 			while (true) {
 				input = scanner.nextLine();
-				var calculator = new Calculator(input);
-				var result = calculator.calc();
+				var expression = new Expression(input);
+				var result = expression.calc();
 				System.out.println(result);
 			}
 
