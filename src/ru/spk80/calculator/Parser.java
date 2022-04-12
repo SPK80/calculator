@@ -12,7 +12,7 @@ public class Parser {
 		int pos = -1;
 		do {
 			pos = expression.indexOf(operators[i++]);
-		} while (pos < 0 || i < operators.length - 1);
+		} while (pos < 0 && i < operators.length - 1);
 
 		if (pos < 0 || pos >= operators.length)
 			throw new Exception("Operator not found!");
@@ -35,11 +35,16 @@ public class Parser {
 	}
 
 	private Operand[] createOperands(String expression, char operatorSymbol) throws Exception {
-		var operands = expression.split("" + operatorSymbol);
+		String s = "\\" + operatorSymbol;
+		var operands = expression.split(s);
 		if (operands.length != 2)
 			throw new Exception("Wrong number of operands!");
 		return new Operand[] { new Operand(operands[0]), new Operand(operands[1]) };
 	}
+
+	// private Operand createLeftOperand(String expression, int operatorPos) {
+	// return new Operand(expression.substring(0, operatorPos));
+	// }
 
 	public Parser(String expression) throws Exception {
 

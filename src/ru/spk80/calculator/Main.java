@@ -4,21 +4,20 @@ import java.util.Scanner;
 
 class Main {
 	public static void main(String[] args) {
-		var scanner = new Scanner(System.in);
-		try {
+
+		try (var scanner = new Scanner(System.in)) {
 			String input;
 			while (true) {
 				input = scanner.nextLine();
-				var expression = new Expression(input);
-				var result = expression.calc();
-				System.out.println(result);
+				try {
+					var expression = new Expression(input);
+					var result = expression.calc();
+					System.out.println(result);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+
 			}
-
-		} catch (Exception e) {
-
-		} finally {
-			scanner.close();
 		}
 	}
-
 }

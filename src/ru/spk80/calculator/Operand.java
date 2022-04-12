@@ -1,16 +1,26 @@
 package ru.spk80.calculator;
 
 public class Operand {
-	private boolean isRoman = false;
-	private int value;
+	private final boolean isRoman;
+	private final int value;
 
 	public Operand(String strValue) throws Exception {
-		value = fromRoman(strValue.trim());
+		int _value;
+		boolean _isRoman;
+		try {
+			_value = Integer.parseInt(strValue);
+			_isRoman = false;
+		} catch (NumberFormatException e) {
+			_value = parseRoman(strValue.trim());
+			_isRoman = true;
+		}
+		value = _value;
+		isRoman = _isRoman;
 	}
 
 	private final String[] romanNums = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
 
-	private int fromRoman(String strValue) throws Exception {
+	private int parseRoman(String strValue) throws Exception {
 		var l = romanNums.length;
 		var i = 0;
 
@@ -19,12 +29,12 @@ public class Operand {
 
 		if (i < 1 || i >= l)
 			throw new Exception("Invalid Roman number!");
-		isRoman = true;
 		return i;
 	}
 
 	public Operand(int intValue) {
 		value = intValue;
+		isRoman = false;
 	}
 
 	public Boolean isRoman() {
@@ -37,6 +47,11 @@ public class Operand {
 
 	public int toInt() {
 		return value;
+	}
+
+	@Override
+	public String toString() {
+		return Integer.toString(value);
 	}
 
 }
