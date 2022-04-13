@@ -27,7 +27,7 @@ public class Operand {
 		var l = romanNums.length;
 		var i = 0;
 
-		while (romanNums[i] != strValue && i++ < l) {
+		while (!strValue.equals(romanNums[i]) && i++ < l - 1) {
 		}
 
 		if (i < 1 || i >= l)
