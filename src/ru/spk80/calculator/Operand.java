@@ -5,6 +5,9 @@ public class Operand {
 	private final int value;
 
 	public Operand(String strValue) throws Exception {
+		if (strValue == null || strValue == "")
+			throw new Exception("Invalid operand!");
+
 		int _value;
 		boolean _isRoman;
 		try {

@@ -7,18 +7,6 @@ public class Parser {
 	private final Operand leftOperand;
 	private final Operand rightOperand;
 
-	private char findOperator(String expression) throws Exception {
-		int i = 0;
-		int pos = -1;
-		do {
-			pos = expression.indexOf(operators[i++]);
-		} while (pos < 0 && i < operators.length - 1);
-
-		if (pos < 0 || pos >= operators.length)
-			throw new Exception("Operator not found!");
-		return expression.charAt(pos);
-	}
-
 	private Operator createOperator(char operatorSymbol) throws Exception {
 		switch (operatorSymbol) {
 			case '+':
@@ -34,26 +22,32 @@ public class Parser {
 		}
 	}
 
-	private Operand[] createOperands(String expression, char operatorSymbol) throws Exception {
-		String s = "\\" + operatorSymbol;
-		var operands = expression.split(s);
-		if (operands.length != 2)
-			throw new Exception("Wrong number of operands!");
-		return new Operand[] { new Operand(operands[0]), new Operand(operands[1]) };
+	private int findOperatorPos(String expression) throws Exception {
+		int i = 0;
+		int pos = -1;
+		do {
+			pos = expression.indexOf(operators[i++]);
+		} while (pos < 0 && i < operators.length);
+
+		if (pos < 0 || pos >= operators.length)
+			throw new Exception("Operator not found!");
+		return pos;
 	}
 
-	// private Operand createLeftOperand(String expression, int operatorPos) {
-	// return new Operand(expression.substring(0, operatorPos));
-	// }
+	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
+		return new Operand(expression.substring(0, operatorPos));
+	}
+
+	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
+		return new Operand(expression.substring(operatorPos + 1, expression.length()));
+	}
 
 	public Parser(String expression) throws Exception {
 
-		var operatorSymbol = findOperator(expression);
-		operator = createOperator(operatorSymbol);
-
-		var operands = createOperands(expression, operatorSymbol);
-		leftOperand = operands[0];
-		rightOperand = operands[1];
+		var operatorPos = findOperatorPos(expression);
+		operator = createOperator(expression.charAt(operatorPos));
+		leftOperand = createLeftOperand(expression, operatorPos);
+		rightOperand = createRightOperand(expression, operatorPos);
 	}
 
 	public Operator getOperator() {
