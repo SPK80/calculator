@@ -14,7 +14,7 @@ public class Operand {
 			_value = Integer.parseInt(strValue);
 			_isRoman = false;
 		} catch (NumberFormatException e) {
-			_value = Roman.toInt(strValue.trim());
+			_value = Roman.toInt(strValue);
 			_isRoman = true;
 		}
 		value = _value;

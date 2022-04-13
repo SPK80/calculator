@@ -35,11 +35,11 @@ public class Parser {
 	}
 
 	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
-		return new Operand(expression.substring(0, operatorPos));
+		return new Operand(expression.substring(0, operatorPos).trim());
 	}
 
 	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
-		return new Operand(expression.substring(operatorPos + 1, expression.length()));
+		return new Operand(expression.substring(operatorPos + 1, expression.length()).trim());
 	}
 
 	public Parser(String expression) throws Exception {
