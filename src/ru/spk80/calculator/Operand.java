@@ -14,25 +14,11 @@ public class Operand {
 			_value = Integer.parseInt(strValue);
 			_isRoman = false;
 		} catch (NumberFormatException e) {
-			_value = parseRoman(strValue.trim());
+			_value = Roman.toInt(strValue.trim());
 			_isRoman = true;
 		}
 		value = _value;
 		isRoman = _isRoman;
-	}
-
-	private final String[] romanNums = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
-
-	private int parseRoman(String strValue) throws Exception {
-		var l = romanNums.length;
-		var i = 0;
-
-		while (!strValue.equals(romanNums[i]) && i++ < l - 1) {
-		}
-
-		if (i < 1 || i >= l)
-			throw new Exception("Invalid Roman number!");
-		return i;
 	}
 
 	public Operand(int intValue) {
@@ -44,8 +30,8 @@ public class Operand {
 		return this.isRoman;
 	}
 
-	public String toRoman() {
-		return romanNums[value];
+	public String toRoman() throws Exception {
+		return Roman.toRoman(value);
 	}
 
 	public int toInt() {
