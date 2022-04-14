@@ -1,6 +1,6 @@
 package ru.spk80.calculator;
 
-public class Expression {
+class Expression {
 	private Parser parser;
 
 	public Expression(String expression) throws Exception {

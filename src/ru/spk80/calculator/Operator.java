@@ -1,6 +1,6 @@
 package ru.spk80.calculator;
 
-public abstract class Operator {
+abstract class Operator {
 
 	protected abstract int operation(int leftValue, int rightValue);
 

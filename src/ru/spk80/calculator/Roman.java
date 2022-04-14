@@ -1,6 +1,6 @@
 package ru.spk80.calculator;
 
-public class Roman {
+class Roman {
 	private static final String[] nums = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
 	private static final String[] tens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
 

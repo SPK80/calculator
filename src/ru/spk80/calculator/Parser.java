@@ -1,6 +1,6 @@
 package ru.spk80.calculator;
 
-public class Parser {
+class Parser {
 
 	private final char[] operators = { '+', '-', '*', '/' };
 	private final Operator operator;

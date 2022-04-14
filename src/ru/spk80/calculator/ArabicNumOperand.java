@@ -1,7 +1,7 @@
 package ru.spk80.calculator;
 
-public class ArabicNumOperand extends Operand {
-	
+class ArabicNumOperand extends Operand {
+
 	public ArabicNumOperand(int value) {
 		super(value);
 	}

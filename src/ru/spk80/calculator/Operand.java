@@ -1,6 +1,6 @@
 package ru.spk80.calculator;
 
-public abstract class Operand {
+abstract class Operand {
 
 	int value;
 
