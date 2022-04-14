@@ -34,12 +34,28 @@ public class Parser {
 		return pos;
 	}
 
+	private Operand parseOperandValue(String strValue) {
+
+		if (strValue == null || strValue == "")
+			throw new Exception("Operand is empty");
+
+		try {
+			int value = Integer.parseInt(strValue);
+			return new ArabicNumOperand(value);
+		} catch (NumberFormatException e) {
+			return new RomanNumOperand(strValue);
+		}
+	}
+
 	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
-		return new Operand(expression.substring(0, operatorPos));
+		// return new Operand(expression.substring(0, operatorPos));
+		return parseOperandValue(expression.substring(0, operatorPos).trim());
 	}
 
 	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
-		return new Operand(expression.substring(operatorPos + 1, expression.length()));
+		// return new Operand(expression.substring(operatorPos + 1,
+		// expression.length()));
+		return parseOperandValue(expression.substring(operatorPos + 1, expression.length()).trim());
 	}
 
 	public Parser(String expression) throws Exception {
