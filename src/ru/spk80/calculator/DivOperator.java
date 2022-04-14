@@ -1,9 +1,8 @@
 package ru.spk80.calculator;
 
-public class DivOperator implements Operator {
-
+public class DivOperator extends Operator {
 	@Override
-	public Operand ApplyTo(Operand leftOperand, Operand rightOperand) {
-		return new Operand(leftOperand.toInt() / rightOperand.toInt());
+	protected int operation(int leftValue, int rightValue) {
+		return leftValue / rightValue;
 	}
 }

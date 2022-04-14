@@ -12,12 +12,8 @@ public class Expression {
 		var leftOperand = parser.getLeftOperand();
 		var rightOperand = parser.getRightOperand();
 
-		var isRoman = leftOperand.isRoman();
-		if (isRoman != rightOperand.isRoman())
-			throw new Exception("Incorrect operands!");
-
-		Operand result = operator.ApplyTo(leftOperand, rightOperand);
-		return isRoman ? result.toRoman() : result.toString();
+		Operand result = operator.applyTo(leftOperand, rightOperand);
+		return result.getString();
 	}
 
 }

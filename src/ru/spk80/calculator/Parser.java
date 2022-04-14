@@ -34,7 +34,7 @@ public class Parser {
 		return pos;
 	}
 
-	private Operand parseOperandValue(String strValue) {
+	private Operand parseOperandValue(String strValue) throws Exception {
 
 		if (strValue == null || strValue == "")
 			throw new Exception("Operand is empty");
