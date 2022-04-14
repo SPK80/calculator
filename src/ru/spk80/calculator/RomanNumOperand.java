@@ -6,8 +6,10 @@ public class RomanNumOperand extends Operand {
 		super(Roman.toInt(strValue));
 	}
 
-	public RomanNumOperand(int value) {
+	public RomanNumOperand(int value) throws Exception {
 		super(value);
+		if (value < 1)
+			throw new Exception("Roman nums must be greater than zero");
 	}
 
 	@Override

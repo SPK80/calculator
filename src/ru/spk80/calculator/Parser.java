@@ -41,6 +41,8 @@ public class Parser {
 
 		try {
 			int value = Integer.parseInt(strValue);
+			if (value < 1 || value > 10)
+				throw new Exception("Input value " + value + " out of range");
 			return new ArabicNumOperand(value);
 		} catch (NumberFormatException e) {
 			return new RomanNumOperand(strValue);
