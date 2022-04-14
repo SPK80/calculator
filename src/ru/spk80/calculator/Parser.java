@@ -34,7 +34,7 @@ public class Parser {
 		return pos;
 	}
 
-	private Operand parseOperandValue(String strValue) throws Exception {
+	private Operand createOperand(String strValue) throws Exception {
 
 		if (strValue == null || strValue == "")
 			throw new Exception("Operand is empty");
@@ -48,11 +48,11 @@ public class Parser {
 	}
 
 	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
-		return parseOperandValue(expression.substring(0, operatorPos).trim());
+		return createOperand(expression.substring(0, operatorPos).trim());
 	}
 
 	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
-		return parseOperandValue(expression.substring(operatorPos + 1, expression.length()).trim());
+		return createOperand(expression.substring(operatorPos + 1, expression.length()).trim());
 	}
 
 	public Parser(String expression) throws Exception {
