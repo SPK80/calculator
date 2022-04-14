@@ -13,6 +13,6 @@ public abstract class Operator {
 		else if (leftOperand instanceof ArabicNumOperand)
 			return new ArabicNumOperand(result);
 		else
-			throw new Exception("");
+			throw new Exception("Anknow class of operand");
 	}
 }
