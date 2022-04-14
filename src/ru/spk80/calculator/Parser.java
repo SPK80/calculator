@@ -48,13 +48,10 @@ public class Parser {
 	}
 
 	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
-		// return new Operand(expression.substring(0, operatorPos));
 		return parseOperandValue(expression.substring(0, operatorPos).trim());
 	}
 
 	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
-		// return new Operand(expression.substring(operatorPos + 1,
-		// expression.length()));
 		return parseOperandValue(expression.substring(operatorPos + 1, expression.length()).trim());
 	}
 
