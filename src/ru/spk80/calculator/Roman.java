@@ -12,7 +12,7 @@ class Roman {
 		}
 
 		if (i < 1 || i >= l)
-			throw new Exception("Invalid Roman number!");
+			throw new Exception("Invalid number " + strValue);
 		return i;
 	}
 
