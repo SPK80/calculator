@@ -28,9 +28,6 @@ class Parser {
 		do {
 			pos = expression.indexOf(operators[i++]);
 		} while (pos < 0 && i < operators.length);
-
-		if (pos < 0)
-			throw new Exception("Operator not found!");
 		return pos;
 	}
 
@@ -38,6 +35,9 @@ class Parser {
 
 		if (strValue == null || strValue == "")
 			throw new Exception("Operand is empty");
+
+		if (findOperatorPos(strValue) >= 0)
+			throw new Exception("Incorrect operand " + strValue);
 
 		try {
 			int value = Integer.parseInt(strValue);
@@ -60,6 +60,9 @@ class Parser {
 	public Parser(String expression) throws Exception {
 
 		var operatorPos = findOperatorPos(expression);
+		if (operatorPos < 0)
+			throw new Exception("Operator not found!");
+
 		operator = createOperator(expression.charAt(operatorPos));
 		leftOperand = createLeftOperand(expression, operatorPos);
 		rightOperand = createRightOperand(expression, operatorPos);
