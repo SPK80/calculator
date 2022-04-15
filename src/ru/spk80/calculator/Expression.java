@@ -3,8 +3,8 @@ package ru.spk80.calculator;
 class Expression {
 	private Parser parser;
 
-	public Expression(String expression) throws Exception {
-		parser = new Parser(expression);
+	public Expression(String str) throws Exception {
+		parser = new Parser(str);
 	}
 
 	public String calc() throws Exception {
@@ -13,6 +13,7 @@ class Expression {
 		var rightOperand = parser.getRightOperand();
 
 		Operand result = operator.applyTo(leftOperand, rightOperand);
+		
 		return result.getString();
 	}
 

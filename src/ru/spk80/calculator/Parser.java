@@ -33,11 +33,11 @@ class Parser {
 		}
 	}
 
-	private int findOperatorPos(String expression) throws Exception {
+	private int findOperatorPos(String exprStr) throws Exception {
 		int i = 0;
 		int pos = -1;
 		do {
-			pos = expression.indexOf(operators[i++]);
+			pos = exprStr.indexOf(operators[i++]);
 		} while (pos < 0 && i < operators.length);
 		return pos;
 	}
@@ -60,23 +60,23 @@ class Parser {
 		}
 	}
 
-	private Operand createLeftOperand(String expression, int operatorPos) throws Exception {
-		return createOperand(expression.substring(0, operatorPos).trim());
+	private Operand createLeftOperand(String exprStr, int operatorPos) throws Exception {
+		return createOperand(exprStr.substring(0, operatorPos).trim());
 	}
 
-	private Operand createRightOperand(String expression, int operatorPos) throws Exception {
-		return createOperand(expression.substring(operatorPos + 1, expression.length()).trim());
+	private Operand createRightOperand(String exprStr, int operatorPos) throws Exception {
+		return createOperand(exprStr.substring(operatorPos + 1, exprStr.length()).trim());
 	}
 
-	public Parser(String expression) throws Exception {
+	public Parser(String exprStr) throws Exception {
 
-		var operatorPos = findOperatorPos(expression);
+		var operatorPos = findOperatorPos(exprStr);
 		if (operatorPos < 0)
 			throw new Exception("Operator not found!");
 
-		operator = createOperator(expression.charAt(operatorPos));
-		leftOperand = createLeftOperand(expression, operatorPos);
-		rightOperand = createRightOperand(expression, operatorPos);
+		operator = createOperator(exprStr.charAt(operatorPos));
+		leftOperand = createLeftOperand(exprStr, operatorPos);
+		rightOperand = createRightOperand(exprStr, operatorPos);
 	}
 
 	public Operator getOperator() {
