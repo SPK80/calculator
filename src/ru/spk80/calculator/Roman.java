@@ -23,19 +23,4 @@ class Roman {
 
 		return tens[ten] + nums[value % 10];
 	}
-
-	// public static void main(String[] args) { // Tests
-	// // String[] nums = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII",
-	// "IX",
-	// // "X" };
-
-	// for (int i = 0; i <= 101; i++) {
-	// try {
-	// // System.out.println(nums[i] + parseRoman(nums[i]));
-	// System.out.println(i + toRoman(i));
-	// } catch (Exception e) {
-	// System.out.println(e.getMessage());
-	// }
-	// }
-	// }
 }
