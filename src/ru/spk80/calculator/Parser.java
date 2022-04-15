@@ -1,5 +1,16 @@
 package ru.spk80.calculator;
 
+enum OpratorSymb { // TODO: read => https://metanit.com/java/tutorial/3.8.php
+	sum('+'), sub('-'), mul('*'), div('/');
+
+	private char symbol;
+
+	OpratorSymb(char symbol) {
+		this.symbol = symbol;
+	}
+
+}
+
 class Parser {
 
 	private final char[] operators = { '+', '-', '*', '/' };
