@@ -29,7 +29,7 @@ class Parser {
 			pos = expression.indexOf(operators[i++]);
 		} while (pos < 0 && i < operators.length);
 
-		if (pos < 0 || pos >= operators.length)
+		if (pos < 0)
 			throw new Exception("Operator not found!");
 		return pos;
 	}
