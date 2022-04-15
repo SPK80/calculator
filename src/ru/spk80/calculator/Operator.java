@@ -6,6 +6,9 @@ abstract class Operator {
 
 	public Operand applyTo(Operand leftOperand, Operand rightOperand) throws Exception {
 
+		if (leftOperand.getClass() != rightOperand.getClass())
+			throw new Exception("Operands of different types");
+
 		var result = operation(leftOperand.getValue(), rightOperand.getValue());
 
 		if (leftOperand instanceof RomanNumOperand)
